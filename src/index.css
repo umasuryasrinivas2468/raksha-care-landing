@@ -2,41 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Raksha Hygiene Design System - Clean, professional, eco-friendly
+All colors MUST be HSL for consistency.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Clean whites and soft grays */
+    --background: 0 0% 98%;
+    --foreground: 220 9% 25%;
 
+    /* Card system - Soft, clean surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 9% 25%;
 
+    /* Popover components */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 9% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Soft feminine pink */
+    --primary: 345 65% 75%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 345 70% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Sage green for eco-friendly theme */
+    --secondary: 145 35% 70%;
+    --secondary-foreground: 145 25% 15%;
+    --secondary-hover: 145 40% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones */
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Light pink for highlights */
+    --accent: 345 45% 90%;
+    --accent-foreground: 345 65% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive states */
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 95%;
+    --ring: 345 65% 75%;
 
-    --radius: 0.5rem;
+    /* Enhanced radius for softer look */
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --hero-gradient: linear-gradient(135deg, hsl(345 65% 75% / 0.1), hsl(145 35% 70% / 0.1));
+    --card-shadow: 0 4px 20px hsl(220 13% 85% / 0.4);
+    --card-hover-shadow: 0 8px 30px hsl(220 13% 80% / 0.5);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +119,62 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero section styling */
+  .hero-section {
+    background: var(--hero-gradient);
+  }
+
+  /* Custom card with enhanced shadows */
+  .product-card {
+    transition: var(--transition-smooth);
+    box-shadow: var(--card-shadow);
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  /* Fade in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.3s forwards;
+  }
+
+  /* Button hover animations */
+  .btn-bounce:hover {
+    transform: scale(1.05);
+    transition: var(--transition-bounce);
+  }
+
+  /* Form styling enhancements */
+  .form-field {
+    transition: var(--transition-smooth);
+  }
+
+  .form-field:focus-within {
+    transform: translateY(-2px);
+    box-shadow: var(--card-hover-shadow);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
